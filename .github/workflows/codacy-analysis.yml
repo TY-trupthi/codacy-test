@@ -27,7 +27,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven
 
-    - name: Run Maven with Codacy analysis
-      run: mvn clean test jacoco:report
-      env:
-        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+    - name: Build, test, and generate Jacoco coverage report
+      run: mvn clean verify jacoco:report
+
+    - name: Upload service coverage
+      uses: codacy/codacy-coverage-reporter-action@v1
+      with:
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        coverage-reports: target/site/jacoco/jacoco.xml
