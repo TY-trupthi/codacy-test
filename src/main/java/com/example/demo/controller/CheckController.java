@@ -13,7 +13,7 @@ public class CheckController {
 	
 	@GetMapping("/{value}")
 	public ResponseEntity<String> getData(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello", HttpStatus.OK);
+		return new ResponseEntity<String>("hello world", HttpStatus.OK);
 	}
 
 }
