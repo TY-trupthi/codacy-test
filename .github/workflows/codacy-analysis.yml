@@ -1,0 +1,24 @@
+name: Codacy Analysis
+
+on:
+  push:
+    branches:
+      - master  # Specify the branch you want to trigger the workflow on commits
+
+jobs:
+  codacy-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: '8' # Choose the appropriate version
+
+    - name: Run Maven with Codacy analysis
+      run: mvn clean test jacoco:report
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
