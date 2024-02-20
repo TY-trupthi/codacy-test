@@ -8,6 +8,13 @@ on:
 jobs:
   codacy-analysis:
     runs-on: ubuntu-latest
+    
+    env:
+      MYSQL_HOST: 192:168:1:7
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: check_database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
 
     steps:
     - name: Check out code
