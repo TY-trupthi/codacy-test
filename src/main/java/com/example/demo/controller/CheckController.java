@@ -15,5 +15,15 @@ public class CheckController {
 	public ResponseEntity<String> getData(@PathVariable Integer value){
 		return new ResponseEntity<String>("hello world", HttpStatus.OK);
 	}
+	
+	@GetMapping("1/{value}")
+	public ResponseEntity<String> getData1(@PathVariable Integer value){
+		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+	}
+	
+	@GetMapping("2/{value}")
+	public ResponseEntity<String> getData2(@PathVariable Integer value){
+		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+	}
 
 }
