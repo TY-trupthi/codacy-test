@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/check")
 public class CheckController {
 	
+	private Integer value;
+	private String Name = "Trupthi";
+	private String lastName;
+	
 	@GetMapping("/{value}")
 	public ResponseEntity<String> getData(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+		return new ResponseEntity<String>("hello world " + Name + lastName.toLowerCase(), HttpStatus.OK);
 	}
 	
 	@GetMapping("1/{value}")

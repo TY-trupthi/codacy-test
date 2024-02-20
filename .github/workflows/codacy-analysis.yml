@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master  # Specify the branch you want to trigger the workflow on commits
+      
+  pull_request:
+    branches:
+      - master  # Specify the branch you want to trigger the workflow on pull requests
 
 jobs:
   codacy-analysis:
@@ -29,6 +33,12 @@ jobs:
 
     - name: Build, test, and generate Jacoco coverage report
       run: mvn clean verify jacoco:report
+      
+    - name: Run Static Analysis
+      run: |
+        mvn checkstyle:checkstyle
+        mvn pmd:pmd
+        mvn findbugs:findbugs
 
     - name: Upload service coverage
       uses: codacy/codacy-coverage-reporter-action@v1
