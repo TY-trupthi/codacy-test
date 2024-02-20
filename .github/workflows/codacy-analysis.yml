@@ -16,7 +16,8 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '8' # Choose the appropriate version
+        distribution: 'temurin' # Specify the JDK distribution, e.g., adopt, amazon-corretto, openjdk, etc.
+        java-version: '8'    # Specify the Java version
         
     - name: Cache dependencies
       uses: actions/cache@v3
