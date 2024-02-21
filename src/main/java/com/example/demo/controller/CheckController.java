@@ -29,5 +29,10 @@ public class CheckController {
 	public ResponseEntity<String> getData2(@PathVariable Integer value){
 		return new ResponseEntity<String>("hello world", HttpStatus.OK);
 	}
+	
+	@GetMapping("4/{value}")
+	public ResponseEntity<String> getData4(@PathVariable Integer value){
+		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+	}
 
 }

@@ -1,47 +1,21 @@
-name: Codacy Analysis
+name: Send Jacoco Report to Codacy
 
 on:
   push:
     branches:
-      - master  # Specify the branch you want to trigger the workflow on commits
-      
-  pull_request:
-    branches:
-      - master  # Specify the branch you want to trigger the workflow on pull requests
+      - master  # Change this to your main branch name if it's different
+  workflow_dispatch:
 
 jobs:
-  codacy-analysis:
+  send-to-codacy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin' # Specify the JDK distribution, e.g., adopt, amazon-corretto, openjdk, etc.
-        java-version: '8'    # Specify the Java version
-        
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven
-
-    - name: Build, test, and generate Jacoco coverage report
-      run: mvn clean verify jacoco:report
-      
-    - name: Run Static Analysis
-      run: |
-        mvn checkstyle:checkstyle
-        mvn pmd:pmd
-        mvn findbugs:findbugs
-
-    - name: Upload service coverage
+    - name: Send Jacoco Report to Codacy
       uses: codacy/codacy-coverage-reporter-action@v1
       with:
-        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        coverage-reports: target/site/jacoco/jacoco.xml
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}  # Codacy project API token
+        coverage-reports: /src/reports/jacoco.xml  # Path to your Jacoco XML report
