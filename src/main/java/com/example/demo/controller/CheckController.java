@@ -22,7 +22,7 @@ public class CheckController {
 	
 	@GetMapping("1/{value}")
 	public ResponseEntity<String> getData1(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello world" + value, HttpStatus.OK);
+		return new ResponseEntity<String>("hello world", HttpStatus.OK);
 	}
 	
 	@GetMapping("2/{value}")
