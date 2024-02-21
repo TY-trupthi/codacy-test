@@ -50,9 +50,3 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
-        
-    - name: Upload CodeQL Results
-      uses: actions/upload-artifact@v2
-      with:
-        name: codeql-results
-        path: /home/runner/work/codacy-test/results/java.sarif

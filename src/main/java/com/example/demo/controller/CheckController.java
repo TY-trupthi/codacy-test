@@ -17,22 +17,22 @@ public class CheckController {
 	
 	@GetMapping("/{value}")
 	public ResponseEntity<String> getData(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello world " + Name + lastName.toLowerCase(), HttpStatus.OK);
+		return new ResponseEntity<String>("hello world " + Name + lastName.toLowerCase() + value, HttpStatus.OK);
 	}
 	
 	@GetMapping("1/{value}")
 	public ResponseEntity<String> getData1(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+		return new ResponseEntity<String>("hello world" + value, HttpStatus.OK);
 	}
 	
 	@GetMapping("2/{value}")
 	public ResponseEntity<String> getData2(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+		return new ResponseEntity<String>("hello world" + value, HttpStatus.OK);
 	}
 	
 	@GetMapping("4/{value}")
 	public ResponseEntity<String> getData4(@PathVariable Integer value){
-		return new ResponseEntity<String>("hello world", HttpStatus.OK);
+		return new ResponseEntity<String>("hello world" + value, HttpStatus.OK);
 	}
 
 }
