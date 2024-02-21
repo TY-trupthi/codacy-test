@@ -51,8 +51,8 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         
-    - name: Upload CodeQL SARIF File
+    - name: Upload CodeQL Results
       uses: actions/upload-artifact@v2
       with:
-        name: codeql-sarif
-        path: src/reports/
+        name: codeql-results
+        path: codeql-results/
