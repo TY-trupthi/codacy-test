@@ -55,4 +55,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: codeql-results
-        path: codeql-results/
+        path: /home/runner/work/codacy-test/results/java.sarif
